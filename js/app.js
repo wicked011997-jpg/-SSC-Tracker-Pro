@@ -21,6 +21,10 @@ const App = {
         if (typeof Calendar !== "undefined") {
             Calendar.init();
         }
+     if (typeof Navigation !== "undefined") {
+            Navigation.init();
+            Navigation.showPage("dashboard");
+        }
         if (typeof Planner !== "undefined") {
             Planner.load(1);
         }
