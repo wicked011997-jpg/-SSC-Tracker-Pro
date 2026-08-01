@@ -104,17 +104,7 @@ const Calendar = {
 
         this.render();
 
-        if(typeof Planner !== "undefined"){
-
-            Planner.load(day);
-
-        }
-
-        if(typeof Dashboard !== "undefined"){
-
-            Dashboard.update();
-
-        }
+        App.setCurrentDay(day);
 
     },
 
