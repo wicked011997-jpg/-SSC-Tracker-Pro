@@ -9,13 +9,15 @@ const Dashboard = {
 
     update() {
 
-        this.updateProgress();
+    this.updateProgress();
 
-        this.updateTodayTarget();
+    this.updateTodayTarget();
 
-        this.updateStatistics();
+    this.updateStatistics();
 
-    },
+    this.updateSubjectBars();
+
+},
 
     updateProgress() {
 
@@ -99,4 +101,33 @@ const Dashboard = {
 
     }
 
+updateSubjectBars() {
+
+    const progress = Storage.getCompletionPercentage(
+        Schedule.totalDays()
+    );
+
+    const bars = [
+        "gsBar",
+        "reasoningBar",
+        "englishBar",
+        "vocabBar",
+        "mathBar"
+    ];
+
+    bars.forEach(id => {
+
+        const bar = document.getElementById(id);
+
+        if (bar) {
+
+            bar.style.width = progress + "%";
+
+            bar.textContent = progress + "%";
+
+        }
+
+    });
+
+}
 };
