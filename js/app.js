@@ -21,6 +21,9 @@ const App = {
         if (typeof Calendar !== "undefined") {
             Calendar.init();
         }
+        if (typeof Planner !== "undefined") {
+            Planner.load(1);
+        }
 
     },
 
