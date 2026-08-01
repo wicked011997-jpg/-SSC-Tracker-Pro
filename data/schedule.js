@@ -876,6 +876,8 @@ const studySchedule = [
     megaTest: true
 }
 
+];
+
 /*
 ==================================================
  Helper Functions
