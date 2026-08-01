@@ -9,15 +9,16 @@ const Dashboard = {
 
     update() {
 
-    this.updateProgress();
+        this.updateProgress();
+        this.updateStatistics();
+        this.updateTodayTarget();
+        this.updateSubjectBars();
 
-    this.updateTodayTarget();
+    },
 
-    this.updateStatistics();
-
-    this.updateSubjectBars();
-
-},
+    /* -----------------------------
+       Overall Progress
+    ----------------------------- */
 
     updateProgress() {
 
@@ -25,24 +26,25 @@ const Dashboard = {
             Schedule.totalDays()
         );
 
-        const progressCircle =
-            document.getElementById("overallProgress");
+        const circle = document.getElementById("overallProgress");
 
-        if (progressCircle) {
+        if (circle) {
 
-            progressCircle.textContent = percent + "%";
+            circle.textContent = percent + "%";
 
         }
 
     },
 
+    /* -----------------------------
+       Statistics
+    ----------------------------- */
+
     updateStatistics() {
 
-        const completed =
-            Storage.getCompletedDays();
+        const completed = Storage.getCompletedDays();
 
-        const total =
-            Schedule.totalDays();
+        const total = Schedule.totalDays();
 
         const completedCard =
             document.getElementById("completedDays");
@@ -60,74 +62,66 @@ const Dashboard = {
         if (remainingCard) {
 
             remainingCard.textContent =
-                total - completed + " Days";
+                (total - completed) + " Days";
 
         }
 
     },
 
+    /* -----------------------------
+       Today's Target
+    ----------------------------- */
+
     updateTodayTarget() {
 
-        const day =
-            App.currentDay;
-
-        const data =
-            Schedule.get(day);
-
-        if (!data) return;
+        const data = Schedule.get(App.currentDay);
 
         const target =
             document.getElementById("todayTarget");
 
-        if (!target) return;
+        if (!target || !data) return;
 
         target.innerHTML = `
+<strong>${data.block}</strong><br>
+${data.title}<br><br>
 
-            <strong>${data.block}</strong><br>
-
-            ${data.title}<br><br>
-
-            <b>GS:</b> ${data.gs}<br>
-
-            <b>Reasoning:</b> ${data.reasoning.join(", ")}<br>
-
-            <b>Grammar:</b> ${data.grammar}<br>
-
-            <b>Vocabulary:</b> ${data.vocabulary}<br>
-
-            <b>Maths:</b> ${data.maths}
-
-        `;
+<b>GS:</b> ${data.gs}<br>
+<b>Reasoning:</b> ${data.reasoning.join(", ")}<br>
+<b>Grammar:</b> ${data.grammar}<br>
+<b>Vocabulary:</b> ${data.vocabulary}<br>
+<b>Maths:</b> ${data.maths}
+`;
 
     },
 
-updateSubjectBars() {
+    /* -----------------------------
+       Subject Progress Bars
+    ----------------------------- */
 
-    const progress = Storage.getCompletionPercentage(
-        Schedule.totalDays()
-    );
+    updateSubjectBars() {
 
-    const bars = [
-        "gsBar",
-        "reasoningBar",
-        "englishBar",
-        "vocabBar",
-        "mathBar"
-    ];
+        const percent = Storage.getCompletionPercentage(
+            Schedule.totalDays()
+        );
 
-    bars.forEach(id => {
+        const ids = [
+            "gsBar",
+            "reasoningBar",
+            "englishBar",
+            "vocabBar",
+            "mathBar"
+        ];
 
-        const bar = document.getElementById(id);
+        ids.forEach(id => {
 
-        if (bar) {
+            const bar = document.getElementById(id);
 
-            bar.style.width = progress + "%";
+            if (!bar) return;
 
-            bar.textContent = progress + "%";
+            bar.style.width = percent + "%";
 
-        }
+        });
 
-    });
+    }
 
-}
 };
