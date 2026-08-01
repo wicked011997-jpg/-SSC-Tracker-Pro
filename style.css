@@ -927,3 +927,25 @@ footer{
     }
 
 }
+.progress {
+
+    width: 100%;
+    height: 12px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    overflow: hidden;
+
+}
+
+.progress div {
+
+    height: 100%;
+    width: 0%;
+    background: #2563eb;
+    transition: width .4s ease;
+    color: white;
+    font-size: 10px;
+    text-align: center;
+    line-height: 12px;
+
+}
