@@ -883,20 +883,46 @@ const studySchedule = [
  Helper Functions
 ==================================================
 */
-
-function getDay(day){
-    return studySchedule.find(d => d.day === day);
-}
-
-function getCompletedDays(progress){
-    return studySchedule.filter(d => progress.includes(d.day));
-}
-
-function getMegaTests(){
-    return studySchedule.filter(d => d.megaTest);
-}
-
-function getCCTDays(){
-    return studySchedule.filter(d => d.cct);
-}
 ];
+/*
+==========================================
+ Borderland SSC Tracker Pro
+ Data API
+==========================================
+*/
+
+const Schedule = {
+
+    data: studySchedule,
+
+    get(day) {
+
+        return this.data.find(item => item.day === day);
+
+    },
+
+    all() {
+
+        return this.data;
+
+    },
+
+    megaTests() {
+
+        return this.data.filter(item => item.megaTest);
+
+    },
+
+    cctDays() {
+
+        return this.data.filter(item => item.cct);
+
+    },
+
+    totalDays() {
+
+        return this.data.length;
+
+    }
+
+};
