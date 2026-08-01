@@ -100,28 +100,27 @@ ${data.title}<br><br>
 
     updateSubjectBars() {
 
-        const percent = Storage.getCompletionPercentage(
-            Schedule.totalDays()
-        );
+    const subjects = [
+        ["gs", "gsBar"],
+        ["reasoning", "reasoningBar"],
+        ["grammar", "englishBar"],
+        ["vocabulary", "vocabBar"],
+        ["maths", "mathBar"]
+    ];
 
-        const ids = [
-            "gsBar",
-            "reasoningBar",
-            "englishBar",
-            "vocabBar",
-            "mathBar"
-        ];
+    subjects.forEach(([subject, id]) => {
 
-        ids.forEach(id => {
+        const result = Storage.getSubjectProgress(subject);
 
-            const bar = document.getElementById(id);
+        const bar = document.getElementById(id);
 
-            if (!bar) return;
+        if (!bar) return;
 
-            bar.style.width = percent + "%";
+        bar.style.width = result.percent + "%";
+        bar.textContent = result.percent + "%";
 
-        });
+    });
 
-    }
+}
 
 };
