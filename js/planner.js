@@ -152,6 +152,65 @@ const Planner = {
 
         return label;
 
+    },
+ completeToday() {
+
+    const data = Schedule.get(this.currentDay);
+
+    if (!data) return;
+
+    const tasks = [
+        "gs",
+        "reasoning",
+        "grammar",
+        "vocabulary",
+        "maths"
+    ];
+
+    if (data.cct) {
+        tasks.push("cct");
     }
 
+    if (data.megaTest) {
+        tasks.push("mega");
+    }
+
+    tasks.forEach(task => {
+
+        Storage.markTask(
+            this.currentDay,
+            task,
+            true
+        );
+
+    });
+
+    this.load(this.currentDay);
+
+    if (typeof Dashboard !== "undefined") {
+        Dashboard.update();
+    }
+
+    if (typeof Calendar !== "undefined") {
+        Calendar.render();
+    }
+
+},
+
 };
+document.addEventListener("DOMContentLoaded", () => {
+
+    const completeBtn =
+        document.getElementById("completeToday");
+
+    if (completeBtn) {
+
+        completeBtn.addEventListener("click", () => {
+
+            Planner.completeToday();
+
+        });
+
+    }
+
+});
