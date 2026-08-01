@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2563eb">
+
+    <title>Borderland SSC Tracker Pro</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script defer src="data.js"></script>
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>📘 Borderland</h2>
+            <span>SSC Tracker Pro</span>
+
+        </div>
+
+        <nav>
+
+            <ul>
+
+                <li class="active" data-page="dashboard">
+                    🏠 Dashboard
+                </li>
+
+                <li data-page="calendar">
+                    📅 Calendar
+                </li>
+
+                <li data-page="planner">
+                    📖 Planner
+                </li>
+
+                <li data-page="revision">
+                    🧠 Revision
+                </li>
+
+                <li data-page="analytics">
+                    📊 Analytics
+                </li>
+
+                <li data-page="timer">
+                    ⏱ Focus Timer
+                </li>
+
+                <li data-page="notes">
+                    📝 Notes
+                </li>
+
+                <li data-page="settings">
+                    ⚙ Settings
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="content">
+
+        <!-- Top Bar -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Borderland SSC Tracker Pro</h1>
+
+                <p>
+                    Complete Offline Study Planner
+                </p>
+
+            </div>
+
+            <div class="top-actions">
+
+                <button id="themeToggle">
+                    🌙
+                </button>
+
+                <button id="exportBtn">
+                    Export
+                </button>
+
+                <button id="importBtn">
+                    Import
+                </button>
+
+            </div>
+
+        </header>
+
+        <!-- Dashboard Section -->
+
+        <section id="dashboard" class="page active-page">
+
+            <!-- Hero -->
+
+            <div class="hero-card">
+
+                <div>
+
+                    <h2 id="todayTitle">
+                        Today's Target
+                    </h2>
+
+                    <p id="todayTask">
+                        Loading today's study plan...
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <button id="completeToday">
+                        ✅ Complete Today
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Statistics -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <h3>Overall Progress</h3>
+
+                    <div class="circle" id="overallCircle">
+
+                        0%
+
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <h3>Completed Days</h3>
+
+                    <p id="completedDays">
+
+                        0 / 65
+
+                    </p>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <h3>Current Streak</h3>
+
+                    <p id="streak">
+
+                        0 Days
+
+                    </p>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <h3>Remaining</h3>
+
+                    <p id="remaining">
+
+                        65 Days
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Subject Cards -->
+
+            <div class="subjects">
+
+                <div class="subject-card">
+                    <h3>General Studies</h3>
+                    <div class="progress">
+                        <div id="gsBar"></div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <h3>Reasoning</h3>
+                    <div class="progress">
+                        <div id="reasoningBar"></div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <h3>English</h3>
+                    <div class="progress">
+                        <div id="englishBar"></div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <h3>Vocabulary</h3>
+                    <div class="progress">
+                        <div id="vocabBar"></div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <h3>Maths</h3>
+                    <div class="progress">
+                        <div id="mathBar"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
