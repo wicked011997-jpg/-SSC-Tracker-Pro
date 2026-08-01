@@ -157,17 +157,49 @@ const Storage = {
 
     getCompletedDays() {
 
-        const progress = this.getProgress();
+    const progress = this.getProgress();
 
-        return Object.keys(progress).filter(day => {
+    let completed = 0;
 
-            const tasks = progress[day].completed;
+    Schedule.all().forEach(day => {
 
-            return Object.values(tasks).every(v => v === true);
+        const tasks = progress[day.day]?.completed || {};
 
-        }).length;
+        const required = [
 
-    },
+            "gs",
+            "reasoning",
+            "grammar",
+            "vocabulary",
+            "maths"
+
+        ];
+
+        if(day.cct){
+
+            required.push("cct");
+
+        }
+
+        if(day.megaTest){
+
+            required.push("mega");
+
+        }
+
+        const done = required.every(task => tasks[task]);
+
+        if(done){
+
+            completed++;
+
+        }
+
+    });
+
+    return completed;
+
+},
 
     getCompletionPercentage(totalDays = 65) {
 
@@ -225,7 +257,16 @@ const Storage = {
        Reset
     ------------------------- */
 
-    resetAll() {
+ getTaskCompletion(day){
+
+    const progress=this.getDayProgress(day);
+
+    const tasks=progress.completed;
+
+    return Object.values(tasks).filter(Boolean).length;
+
+},   
+ resetAll() {
 
         if (
             confirm(
