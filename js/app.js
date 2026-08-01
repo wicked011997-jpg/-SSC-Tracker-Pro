@@ -24,7 +24,9 @@ const App = {
         if (typeof Planner !== "undefined") {
             Planner.load(1);
         }
-
+        if (typeof Dashboard !== "undefined") {
+            Dashboard.update();
+        }
     },
 
     setCurrentDay(day) {
