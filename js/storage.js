@@ -266,6 +266,32 @@ const Storage = {
     return Object.values(tasks).filter(Boolean).length;
 
 },   
+ getSubjectProgress(subject) {
+
+    let total = 0;
+    let completed = 0;
+
+    Schedule.all().forEach(day => {
+
+        if (day[subject] !== undefined) {
+
+            total++;
+
+            if (this.isTaskCompleted(day.day, subject)) {
+                completed++;
+            }
+
+        }
+
+    });
+
+    return {
+        completed,
+        total,
+        percent: total === 0 ? 0 : Math.round((completed / total) * 100)
+    };
+
+},
  resetAll() {
 
         if (
