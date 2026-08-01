@@ -7,7 +7,8 @@
 
 const App = {
 
-    currentDay: 1,
+    currentDay:
+Number(localStorage.getItem("selectedDay")) || 1,
 
     init() {
 
@@ -26,7 +27,7 @@ const App = {
             Navigation.showPage("dashboard");
         }
         if (typeof Planner !== "undefined") {
-            Planner.load(1);
+            Planner.load(App.currentDay);
         }
         if (typeof Dashboard !== "undefined") {
             Dashboard.update();
