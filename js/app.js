@@ -29,6 +29,13 @@ Number(localStorage.getItem("selectedDay")) || 1,
         if (typeof Planner !== "undefined") {
             Planner.load(App.currentDay);
         }
+     if (typeof Notes !== "undefined") {
+
+    Notes.init();
+
+    Notes.load(App.currentDay);
+
+}
         if (typeof Dashboard !== "undefined") {
             Dashboard.update();
         }
@@ -49,6 +56,10 @@ Number(localStorage.getItem("selectedDay")) || 1,
         if (typeof Dashboard !== "undefined") {
             Dashboard.update();
         }
+        // Notes
+        if (typeof Notes !== "undefined") {
+            Notes.load(day);
+}
 
     }
 
