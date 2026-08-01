@@ -70,13 +70,17 @@ const Calendar = {
 
             /* Completed */
 
-            const progress = Storage.getDayProgress(day.day);
+           const progress = Storage.getDayProgress(day.day);
 
-            if(this.isCompleted(progress)){
+if (this.isCompleted(progress)) {
 
-                card.classList.add("completed");
+    card.classList.add("completed");
 
-            }
+} else if (Object.keys(progress.completed).length > 0) {
+
+    card.classList.add("in-progress");
+
+}
 
             /* Selected */
 
