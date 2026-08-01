@@ -892,6 +892,35 @@ footer{
     }
 
     button{
+       /* Calendar Extras */
+
+.calendar-day.mega-test{
+
+    border:3px solid gold;
+
+}
+
+.calendar-day.cct-day{
+
+    border-left:6px solid #22c55e;
+
+}
+
+.calendar-day.completed{
+
+    background:#22c55e;
+
+    color:white;
+
+}
+
+.calendar-day.today{
+
+    transform:scale(1.05);
+
+    border:3px solid var(--primary);
+
+}
 
         width:100%;
 
