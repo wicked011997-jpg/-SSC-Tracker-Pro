@@ -883,7 +883,6 @@ const studySchedule = [
  Helper Functions
 ==================================================
 */
-];
 /*
 ==========================================
  Borderland SSC Tracker Pro
