@@ -99,7 +99,7 @@ const Dashboard = {
 
         `;
 
-    }
+    },
 
 updateSubjectBars() {
 
