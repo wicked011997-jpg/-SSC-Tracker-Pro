@@ -25,7 +25,7 @@ const Calendar = {
 
         grid.innerHTML = "";
 
-        studySchedule.forEach(day => {
+        Schedule.all().forEach(day => {
 
             const card = document.createElement("div");
 
