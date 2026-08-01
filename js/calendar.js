@@ -102,6 +102,8 @@ const Calendar = {
 
         this.currentDay = day;
 
+    localStorage.setItem("selectedDay", day);
+
     this.render();
 
     App.setCurrentDay(day);
