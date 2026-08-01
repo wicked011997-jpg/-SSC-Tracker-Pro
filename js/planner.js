@@ -118,23 +118,21 @@ const Planner = {
 
         checkbox.addEventListener("change", () => {
 
-            Storage.markTask(
+    Storage.markTask(
+        this.currentDay,
+        task.key,
+        checkbox.checked
+    );
 
-                this.currentDay,
+    if (typeof Dashboard !== "undefined") {
+        Dashboard.update();
+    }
 
-                task.key,
+    if (typeof Calendar !== "undefined") {
+        Calendar.render();
+    }
 
-                checkbox.checked
-
-            );
-
-            if (typeof Dashboard !== "undefined") {
-
-                Dashboard.update();
-
-            }
-
-        });
+});
 
         const text = document.createElement("span");
 
