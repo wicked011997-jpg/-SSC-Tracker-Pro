@@ -102,11 +102,17 @@ const Calendar = {
 
         this.currentDay = day;
 
-        this.render();
+    this.render();
 
-        App.setCurrentDay(day);
+    App.setCurrentDay(day);
 
-    },
+    if(typeof Navigation!=="undefined"){
+
+        Navigation.showPage("planner");
+
+    }
+
+},
 
     isCompleted(progress){
 
